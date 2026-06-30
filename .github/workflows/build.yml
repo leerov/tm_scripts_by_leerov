@@ -2,11 +2,13 @@ name: Build out.json
 
 on:
   push:
-    branches: [ main ]   # или ваша основная ветка
+    branches: [ main ]
   pull_request:
     branches: [ main ]
-  # Можно добавить ручной запуск:
   workflow_dispatch:
+
+permissions:
+  contents: write   # 👈 Даём право на запись в репозиторий
 
 jobs:
   build:
@@ -25,14 +27,16 @@ jobs:
         run: node build.js
 
       - name: Commit and push if out.json changed
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add out.json
-          # Проверяем, есть ли изменения
           if git diff --staged --quiet; then
             echo "Нет изменений в out.json"
           else
             git commit -m "Автоматическая сборка out.json"
-            git push
+            # Используем токен для аутентификации
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
           fi
