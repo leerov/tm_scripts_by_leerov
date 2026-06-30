@@ -1,0 +1,17 @@
+{
+  "script": {
+    "name": "Убираем фон и скрываем скроллы",
+    "namespace": "https://github.com/leerov/tm_scripts_by_leerov",
+    "version": "2.1",
+    "description": "Полностью убирает фон у body, main, .root и скрывает все полосы прокрутки",
+    "author": "leerov",
+    "match": ["*://*/*"],
+    "grant": ["none"],
+    "downloadURL": "https://raw.githubusercontent.com/leerov/tm_scripts_by_leerov/main/scripts/remove-background-scrollbars/script.js",
+    "updateURL": "https://raw.githubusercontent.com/leerov/tm_scripts_by_leerov/main/scripts/remove-background-scrollbars/script.js",
+    "supportURL": "https://github.com/leerov/tm_scripts_by_leerov/issues",
+    "homepageURL": "https://github.com/leerov/tm_scripts_by_leerov"
+  },
+  "enabled": true,
+  "position": 0
+}
